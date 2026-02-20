@@ -114,13 +114,13 @@ sudo chmod +x /usr/bin/tutanota.AppImage
 ```
 
 > [!NOTE]
-> TODO:
-> set ZSH as shell
-> Wayland autostart
-> dwl bar patch (https://codeberg.org/dwl/dwl-patches/src/branch/main/patches/bar) 
-> dwl config opacity and center date
-> dwl gaps patch (https://codeberg.org/dwl/dwl-patches/raw/branch/main/patches/gaps/gaps.patch)
-> (mew config center)
-> fix monitor script
-> create script for battery, brightness, volume, bluetooth, wifi notification
-> set wallpaper
+* TODO:
+* set ZSH as shell
+* Wayland autostart
+* dwl bar patch (https://codeberg.org/dwl/dwl-patches/src/branch/main/patches/bar) 
+* dwl config opacity and center date
+* dwl gaps patch (https://codeberg.org/dwl/dwl-patches/raw/branch/main/patches/gaps/gaps.patch)
+* (mew config center)
+* fix monitor script
+* create script for battery, brightness, volume, bluetooth, wifi notification
+* set wallpaper
