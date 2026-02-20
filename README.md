@@ -113,8 +113,7 @@ sudo wget https://app.tuta.com/desktop/tutanota-desktop-linux.AppImage -O /usr/b
 sudo chmod +x /usr/bin/tutanota.AppImage
 ```
 
-> [!NOTE]
-* TODO:
+## TODO
 * set ZSH as shell
 * Wayland autostart
 * dwl bar patch (https://codeberg.org/dwl/dwl-patches/src/branch/main/patches/bar) 
