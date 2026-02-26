@@ -3,8 +3,8 @@ gh
 network-manager
 foot
 wayland-protocols
-libwlroots-0.18
-libwlroots-0.18-dev
+libwlroots-0.19
+libwlroots-0.19-dev
 wmenu
 wl-clipboard
 libinput-dev
