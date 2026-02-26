@@ -18,16 +18,10 @@ usermod -aG sudo konrad
 reboot
 ```
 
-## Packages
+## Dotfiles
 
 > [!NOTE]
 > Login as user
-
-```
-xargs sudo apt -y install < ~/Dotfiles/packages
-```
-
-## Dotfiles
 
 ```
 git clone https://github.com/gascko/Dotfiles-Wayland.git ~/Dotfiles
@@ -36,22 +30,25 @@ git clone https://github.com/gascko/Dotfiles-Wayland.git ~/Dotfiles
 cp ~/Dotfiles/.* ~/
 ```
 
-## Pinning
+# Switching to Debian Testing
 
 > [!NOTE]
-> Check Release Name of **Stable** and **Testing** [Debian Release](https://www.debian.org/releases/) 
+> Check Release Name of **Stable** and **Testing** [Debian Release](https://www.debian.org/releases/)
 
 ```
-echo "deb http://deb.debian.org/debian testing main contrib non-free" | sudo tee -a /etc/apt/sources.list
+sudo sed -i 's/trixie/testing/g' /etc/apt/sources.list
 ```
 ```
-sudo cp ~/Dotfiles/preferences /etc/apt/preferences
+sudo apt update && sudo apt upgrade
+```
+
+## Packages
+
+```
+xargs sudo apt -y install < ~/Dotfiles/packages
 ```
 ```
-sudo apt update
-```
-```
-xargs sudo apt -y install -t forky < ~/Dotfiles/pinning
+sudo reboot
 ```
 
 ## Network
@@ -74,16 +71,25 @@ git clone https://github.com/nvim-mini/mini.deps ~/.local/share/nvim/site/pack/d
 cp init.lua ~/.config/nvim/init.lua
 ```
 
-## Window Manager
+## Install dwl
 
 ```
-mkdir .config/dwl
-```
-```
-mkdir .config/mew
+mkdir -p .config/dwl
 ```
 ```
 git clone https://codeberg.org/dwl/dwl.git ~/.config/dwl
+```
+```
+wget https://codeberg.org/dwl/dwl-patches/raw/branch/main/patches/bar/bar.patch -O ~/.config/dwl/bar.patch
+```
+```
+wget https://codeberg.org/dwl/dwl-patches/raw/branch/main/patches/vanitygaps/vanitygaps.patch -O ~/.config/dwl/vanitygaps.patch
+```
+
+## Install mew
+
+```
+mkdir -p .config/mew
 ```
 ```
 git https://codeberg.org/sewn/mew.git ~/.config/mew
@@ -118,10 +124,8 @@ sudo chmod +x /usr/bin/tutanota.AppImage
 
 ## TODO
 * set ZSH as shell
+* set up neovim (with internal package manager (without mini)
 * Wayland autostart
-* dwl bar patch (https://codeberg.org/dwl/dwl-patches/src/branch/main/patches/bar) 
-* dwl config opacity and center date
-* dwl vanity gaps patch (https://codeberg.org/dwl/dwl-patches/src/branch/main/patches/vanitygaps)
 * (mew config center)
 * fix monitor script
 * create script for battery, brightness, volume, bluetooth, wifi notification
