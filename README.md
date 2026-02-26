@@ -3,13 +3,13 @@
 > [!NOTE]
 > Setup installed with [Debian Netinstaller](https://www.debian.org/CD/netinst/)
 
- ## Sudo
+ ## Sudo and Git
 
 > [!NOTE]
 > Login as root
 
 ```
-apt install sudo
+apt install sudo git
 ```
 ```
 usermod -aG sudo konrad
@@ -20,6 +20,9 @@ reboot
 
 ## Packages
 
+> [!NOTE]
+> Login as user
+
 ```
 xargs sudo apt -y install < ~/Dotfiles/packages
 ```
@@ -27,7 +30,7 @@ xargs sudo apt -y install < ~/Dotfiles/packages
 ## Dotfiles
 
 ```
-git clone https://github.com/gascko/Dotfiles-Wayland.git ~/
+git clone https://github.com/gascko/Dotfiles-Wayland.git ~/Dotfiles
 ```
 ```
 cp ~/Dotfiles/.* ~/
