@@ -56,6 +56,8 @@ sudo reboot
 ```
 managed=true
 ```
+> [!NOTE]
+> If Wifi still not working remove Wifi from /etc/network/interfaces
 
 > /etc/NetworkManager/NetworkManager.conf
 
@@ -95,12 +97,6 @@ mkdir -p .config/mew
 git https://codeberg.org/sewn/mew.git ~/.config/mew
 ```
 
-## Touchpad
-
-```
-sudo cp ~/Dotfiles/40-libinput.conf /etc/X11/xorg.conf.d/40-libinput.conf
-```
-
 ## Grub
 
 ```
@@ -123,8 +119,6 @@ sudo chmod +x /usr/bin/tutanota.AppImage
 ```
 
 ## TODO
-* set ZSH as shell
-* set up neovim (with internal package manager (without mini)
 * Wayland autostart
 * (mew config center)
 * fix monitor script

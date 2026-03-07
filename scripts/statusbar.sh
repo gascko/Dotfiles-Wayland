@@ -53,7 +53,7 @@ volume() {
 }
 
 while true; do
-    dateStatus=$(date +%H:%M)
+    dateStatus=$(date +%H:%M:%s)
     batteryStatus=$(battery)
     networkStatus=$(wifi)
 	volumeStatus=$(volume)
@@ -78,7 +78,7 @@ while true; do
 
     statusLine="$statusLine$dateStatus"
 
-    xsetroot -name "$statusLine   "
+    echo "$statusLine   "
     
-    sleep 10
+    sleep 1
 done

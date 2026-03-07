@@ -90,13 +90,7 @@ local deps = require("mini.deps")
 deps.setup({})
 deps.add({source = "neovim/nvim-lspconfig"})
 deps.add({source = "nvim-mini/mini.completion"})
-
--- Build in package manager in nvim version 0.12
-
---vim.pack.add({
---  { src = 'https://github.com/nvim-mini/mini.completion' },
---  { src = 'https://github.com/neovim/nvim-lspconfig' },
---})
+deps.add({source = "ellisonleao/gruvbox.nvim"})
 
 -- ########## LSP ##########
 
@@ -137,4 +131,4 @@ vim.diagnostic.config {
   update_in_insert = true,
 }
 
-vim.cmd("colorscheme default")
+vim.cmd("colorscheme gruvbox")
