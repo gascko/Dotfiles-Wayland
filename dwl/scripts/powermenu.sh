@@ -1,6 +1,7 @@
 #!/bin/bash
+
 options="\uf023\n\uf011\n\uf021"
-selected=$(echo -e $options | dmenu)
+selected=$(echo -e $options | wmenu)
 
 if [[ $selected == "" ]]; then
     systemctl poweroff

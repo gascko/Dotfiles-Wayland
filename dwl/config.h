@@ -9,7 +9,7 @@ static const int bypass_surface_visibility = 0;  /* 1 means idle inhibitors will
 static const unsigned int borderpx         = 2;  /* border pixel of windows */
 static const int showbar                   = 1; /* 0 means no bar */
 static const int topbar                    = 1; /* 0 means bottom bar */
-static const char *fonts[]                 = {"monospace:size=12"};
+static const char *fonts[]                 = {"FontAwesome:pixelsize=15:antialias=true:autohint=true"};
 static const float rootcolor[]             = COLOR(0x000000ff);
 static const unsigned int gappih           = 10; /* horiz inner gap between windows */
 static const unsigned int gappiv           = 10; /* vert inner gap between windows */
@@ -21,9 +21,9 @@ static const int monoclegaps               = 0;  /* 1 means outer gaps in monocl
 static const float fullscreen_bg[]         = {0.0f, 0.0f, 0.0f, 1.0f}; /* You can also use glsl colors */
 static uint32_t colors[][3]                = {
 	/*               fg          bg          border    */
-	[SchemeNorm] = { 0xeeeeeeff, 0x101010cc, 0xeeeeeeff },
-	[SchemeSel]  = { 0xeeeeeeff, 0x101010cc, 0xb8bb26ff },
-	[SchemeUrg]  = { 0,          0,          0x770000ff },
+	[SchemeNorm] = { 0xddddddff, 0x000000ff, 0x1c1c1e00 },
+	[SchemeSel]  = { 0xddddddff, 0x000000ff, 0xddddddff },
+	[SchemeUrg]  = { 0,          0,          0xddddddff },
 };
 
 /* tagging */
@@ -43,8 +43,8 @@ static const Rule rules[] = {
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]=",      tile },
-	{ "><>",      NULL },    /* no layout function means floating behavior */
-	{ "[M]",      monocle },
+//	{ "><>",      NULL },    /* no layout function means floating behavior */
+//	{ "[M]",      monocle },
 };
 
 /* monitors */
@@ -118,7 +118,6 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 
 /* If you want to use the windows key for MODKEY, use WLR_MODIFIER_LOGO */
 #define MODKEY WLR_MODIFIER_LOGO
-
 #define TAGKEYS(KEY,SKEY,TAG) \
 	{ MODKEY,                    KEY,            view,            {.ui = 1 << TAG} }, \
 	{ MODKEY|WLR_MODIFIER_CTRL,  KEY,            toggleview,      {.ui = 1 << TAG} }, \
@@ -130,16 +129,15 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 
 /* commands */
 static const char *termcmd[] = { "foot", NULL };
-static const char *menucmd[] = { "wmenu-run", NULL };
-
+static const char *menucmd[] = { "mew-run", NULL };
 static const char *lockcmd[]        = { "swaylock", NULL };
-static const char *vol_upcmd[]      = { "pulsemixer", "--set-volume", "+10", NULL };
-static const char *vol_downcmd[]      = { "pulsemixer", "--set-volume", "-10", NULL };
-static const char *vol_mutecmd[]      = { "pulsemixer", "--mute", NULL };
+static const char *vol_upcmd[]      = { "/home/konrad/.config/dwl/scripts/volume.sh", "up", NULL };
+static const char *vol_downcmd[]      = { "/home/konrad/.config/dwl/scripts/volume.sh", "down", NULL };
+static const char *vol_mutecmd[]      = { "/home/konrad/.config/dwl/scripts/volume.sh", "mute", NULL };
 static const char *powercmd[]       = { "/home/konrad/.config/dwl/scripts/powermenu.sh", NULL };
 static const char *mon_cmd[]        = { "/home/konrad/.config/dwl/scripts/monitor.sh", NULL };
-static const char *bright_upcmd[]   = { "brightnessctl", "-d", "*", "-c", "backlight", "set", "+10%", NULL };
-static const char *bright_downcmd[] = { "brightnessctl", "-d", "*", "-c", "backlight", "set", "10%-", NULL };
+static const char *bright_upcmd[]   = { "/home/konrad/.config/dwl/scripts/brightness.sh", "up", NULL };
+static const char *bright_downcmd[] = { "/home/konrad/.config/dwl/scripts/brightness.sh", "down", NULL };
 
 static const Key keys[] = {
 	/* Note that Shift changes certain key codes: 2 -> at, etc. */

@@ -1,11 +1,11 @@
 texlive
 gh
+dunst
 network-manager
 foot
 wayland-protocols
 libwlroots-0.19
 libwlroots-0.19-dev
-wmenu
 wl-clipboard
 libinput-dev
 libinput-bin

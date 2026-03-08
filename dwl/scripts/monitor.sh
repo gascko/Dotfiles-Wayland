@@ -1,3 +1,5 @@
+#!/bin/bash
+
 actions="left\nright\nabove\nbelow\noff\non"
 display=$(xrandr | grep " primary " | awk '{print$1 }')
 

@@ -30,7 +30,7 @@ git clone https://github.com/gascko/Dotfiles-Wayland.git ~/Dotfiles
 cp ~/Dotfiles/.* ~/
 ```
 
-# Switching to Debian Testing
+## Switching to Debian Testing
 
 > [!NOTE]
 > Check Release Name of **Stable** and **Testing** [Debian Release](https://www.debian.org/releases/)
@@ -56,6 +56,7 @@ sudo reboot
 ```
 managed=true
 ```
+
 > [!NOTE]
 > If Wifi still not working remove Wifi from /etc/network/interfaces
 
@@ -70,7 +71,7 @@ mkdir -p ~/.local/share/nvim/site/pack/deps/start
 git clone https://github.com/nvim-mini/mini.deps ~/.local/share/nvim/site/pack/deps/start/mini.deps
 ```
 ```
-cp init.lua ~/.config/nvim/init.lua
+cp ~/Dotfiles/nvim/init.lua ~/.config/nvim/
 ```
 
 ## Install dwl
@@ -82,10 +83,13 @@ mkdir -p .config/dwl
 git clone https://codeberg.org/dwl/dwl.git ~/.config/dwl
 ```
 ```
-wget https://codeberg.org/dwl/dwl-patches/raw/branch/main/patches/bar/bar.patch -O ~/.config/dwl/bar.patch
+cp ~/Dotfiles/dwl/* ~/.config/dwl/
 ```
 ```
-wget https://codeberg.org/dwl/dwl-patches/raw/branch/main/patches/vanitygaps/vanitygaps.patch -O ~/.config/dwl/vanitygaps.patch
+cp ~/Dotfiles/.bash_profile ~/
+```
+```
+sudo make install
 ```
 
 ## Install mew
@@ -95,6 +99,21 @@ mkdir -p .config/mew
 ```
 ```
 git https://codeberg.org/sewn/mew.git ~/.config/mew
+```
+```
+make
+```
+```
+sudo make install
+```
+
+## Install dunst
+
+```
+mkdir -p .config/dunst
+```
+```
+cp ~/Dotfiles/dunstrc ~/.config/dunst/
 ```
 
 ## Grub
@@ -119,8 +138,10 @@ sudo chmod +x /usr/bin/tutanota.AppImage
 ```
 
 ## TODO
-* Wayland autostart
-* (mew config center)
 * fix monitor script
-* create script for battery, brightness, volume, bluetooth, wifi notification
-* set wallpaper
+* add battery script and notify
+* find solution (TUI) for bluetooth
+* add wifi notification when connected
+* add screenshot script using grim and slurp
+* fix swaylock or switch to lightweight solution
+* fix foot terminal color

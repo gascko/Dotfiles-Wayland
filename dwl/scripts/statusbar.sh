@@ -53,7 +53,6 @@ volume() {
 }
 
 while true; do
-    dateStatus=$(date +%H:%M:%s)
     batteryStatus=$(battery)
     networkStatus=$(wifi)
 	volumeStatus=$(volume)
