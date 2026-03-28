@@ -18,6 +18,7 @@ battery() {
             symbol="\uf243"  # 20-40% battery
         else
             symbol="\uf244"  # Low battery
+			dunstify -h string:x-dunst-stack-tag:battery -u critical "Warnung Battery bei ${percent}%!" 
         fi 
     fi
 
@@ -42,8 +43,9 @@ wifi() {
 
 volume() {
 	volumeStatus="$(pulsemixer --get-volume | awk '{print $1}')"
+	muteStatus="$(pulsemixer --get-mute)"
 	
-	if [[ $volumeStatus -gt 0 ]]; then
+	if [[ $volumeStatus -gt 0 && $muteStatus == 0 ]]; then
 		symbol="\uf028"
 	else
 		symbol=""
@@ -79,5 +81,5 @@ while true; do
 
     echo "$statusLine   "
     
-    sleep 1
+    sleep 5
 done

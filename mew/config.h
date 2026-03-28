@@ -2,7 +2,7 @@
 /* Default settings; can be overriden by command line. */
 
 static int top              = 1;                       /* -b option; if 0, appear at bottom */
-static const char *fonts[]                 = {"FontAwesome:pixelsize=14:antialias=true:autohint=true"};
+static const char *fonts[]                 = {"FontAwesome:pixelsize=18:antialias=true:autohint=true"};
 static const char *prompt   = NULL;                    /* -p option; prompt to the left of input field */
 static uint32_t colors[][2] = {
 	/*               fg         bg          */

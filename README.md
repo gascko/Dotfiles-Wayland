@@ -158,5 +158,8 @@ sudo wget https://app.tuta.com/desktop/tutanota-desktop-linux.AppImage -O /usr/b
 sudo chmod +x /usr/bin/tutanota.AppImage
 ```
 
-## TODO
-* write ncurses application for monitor script (C read json)
+## Usefull Aliases in `.bashrc`
+
+```
+alias monitor='wlr-randr --output eDP-1 --pos 0,0 --output HDMI-A-2 --pos 0,-1080'
+```
