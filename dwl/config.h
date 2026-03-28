@@ -9,7 +9,7 @@ static const int bypass_surface_visibility = 0;  /* 1 means idle inhibitors will
 static const unsigned int borderpx         = 2;  /* border pixel of windows */
 static const int showbar                   = 1; /* 0 means no bar */
 static const int topbar                    = 1; /* 0 means bottom bar */
-static const char *fonts[]                 = {"FontAwesome:pixelsize=15:antialias=true:autohint=true"};
+static const char *fonts[]                 = {"FontAwesome:pixelsize=18:antialias=true:autohint=true"};
 static const float rootcolor[]             = COLOR(0x000000ff);
 static const unsigned int gappih           = 10; /* horiz inner gap between windows */
 static const unsigned int gappiv           = 10; /* vert inner gap between windows */
@@ -21,8 +21,8 @@ static const int monoclegaps               = 0;  /* 1 means outer gaps in monocl
 static const float fullscreen_bg[]         = {0.0f, 0.0f, 0.0f, 1.0f}; /* You can also use glsl colors */
 static uint32_t colors[][3]                = {
 	/*               fg          bg          border    */
-	[SchemeNorm] = { 0xddddddff, 0x000000ff, 0x1c1c1e00 },
-	[SchemeSel]  = { 0xddddddff, 0x000000ff, 0xddddddff },
+	[SchemeNorm] = { 0xddddddff, 0x0e0e0eff, 0x1c1c1e00 },
+	[SchemeSel]  = { 0xddddddff, 0x0e0e0eff, 0xddddddff },
 	[SchemeUrg]  = { 0,          0,          0xddddddff },
 };
 
@@ -137,6 +137,8 @@ static const char *vol_mutecmd[]      = { "/home/konrad/.config/dwl/scripts/volu
 static const char *powercmd[]       = { "/home/konrad/.config/dwl/scripts/powermenu.sh", NULL };
 static const char *bright_upcmd[]   = { "/home/konrad/.config/dwl/scripts/brightness.sh", "up", NULL };
 static const char *bright_downcmd[] = { "/home/konrad/.config/dwl/scripts/brightness.sh", "down", NULL };
+static const char *screenshot_selection_cmd[] = { "/home/konrad/.config/dwl/scripts/screenshot.sh", "selection", NULL };
+static const char *screenshot_cmd[] = { "/home/konrad/.config/dwl/scripts/screenshot.sh", NULL };
 
 static const Key keys[] = {
 	/* Note that Shift changes certain key codes: 2 -> at, etc. */
@@ -149,6 +151,8 @@ static const Key keys[] = {
     { 0,                         XKB_KEY_XF86AudioRaiseVolume,    spawn,          {.v = vol_upcmd} },
     { MODKEY,                    XKB_KEY_Escape,                  spawn,          {.v = powercmd} },
 	{ MODKEY,                    XKB_KEY_p,           spawn,            {.v = menucmd} },
+	{ 0,                         XKB_KEY_Print,           spawn,            {.v = screenshot_cmd} },
+	{ WLR_MODIFIER_SHIFT,                         XKB_KEY_Print,           spawn,            {.v = screenshot_selection_cmd} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_Return,      spawn,            {.v = termcmd} },
 	{ MODKEY|WLR_MODIFIER_LOGO,  XKB_KEY_h,          incgaps,       {.i = +1 } },
 	{ MODKEY|WLR_MODIFIER_LOGO,  XKB_KEY_l,          incgaps,       {.i = -1 } },

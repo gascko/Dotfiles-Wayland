@@ -90,7 +90,6 @@ local deps = require("mini.deps")
 deps.setup({})
 deps.add({source = "neovim/nvim-lspconfig"})
 deps.add({source = "nvim-mini/mini.completion"})
-deps.add({source = "ellisonleao/gruvbox.nvim"})
 
 -- ########## LSP ##########
 
@@ -131,4 +130,6 @@ vim.diagnostic.config {
   update_in_insert = true,
 }
 
-vim.cmd("colorscheme gruvbox")
+vim.cmd("colorscheme default")
+
+vim.api.nvim_set_hl(0, 'Normal', { bg = 'NONE' })

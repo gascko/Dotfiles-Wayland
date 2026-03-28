@@ -14,7 +14,6 @@ libinput-bin
 libxkbcommon-dev
 libxkbcommon-tools
 pkg-config
-swaylock 
 qutebrowser
 grim
 slurp

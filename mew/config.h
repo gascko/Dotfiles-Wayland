@@ -6,7 +6,7 @@ static const char *fonts[]                 = {"FontAwesome:pixelsize=14:antialia
 static const char *prompt   = NULL;                    /* -p option; prompt to the left of input field */
 static uint32_t colors[][2] = {
 	/*               fg         bg          */
-	[SchemeNorm] = { 0xddddddff, 0x000000ff },
+	[SchemeNorm] = { 0xddddddff, 0x0e0e0eff },
 	[SchemeSel]  = { 0x000000ff, 0xddddddff },
 	[SchemeOut]  = { 0x000000ff, 0x00ffffff },
 };

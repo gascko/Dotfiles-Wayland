@@ -1,3 +1,15 @@
+![](preview.png)
+
+# TL;DR
+
+* Wallpaper [Wallhaven](https://whvn.cc/rqy1mm)
+* Terminal [foot](https://codeberg.org/dnkl/foot)
+* Screenlocker [wlock](https://github.com/rsalmin/wlock)
+* WM [dwl](https://codeberg.org/dwl/dwl)
+* Searchbar [mew](https://codeberg.org/sewn/mew)
+* Notifications [dunst](https://github.com/dunst-project/dunst)
+* Editor [nvim](https://neovim.io/)
+
 # Installation
 
 > [!NOTE]
@@ -147,8 +159,4 @@ sudo chmod +x /usr/bin/tutanota.AppImage
 ```
 
 ## TODO
-* coloring foot, nvim, bar fix (transparency?)
-* add wallpapers
-* increase terminal, bar font size
 * write ncurses application for monitor script (C read json)
-* add screenshot script using grim and slurp
