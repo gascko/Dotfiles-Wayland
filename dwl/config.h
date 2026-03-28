@@ -130,12 +130,11 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 /* commands */
 static const char *termcmd[] = { "foot", NULL };
 static const char *menucmd[] = { "mew-run", NULL };
-static const char *lockcmd[]        = { "swaylock", NULL };
+static const char *lockcmd[]        = { "wlock", NULL };
 static const char *vol_upcmd[]      = { "/home/konrad/.config/dwl/scripts/volume.sh", "up", NULL };
 static const char *vol_downcmd[]      = { "/home/konrad/.config/dwl/scripts/volume.sh", "down", NULL };
 static const char *vol_mutecmd[]      = { "/home/konrad/.config/dwl/scripts/volume.sh", "mute", NULL };
 static const char *powercmd[]       = { "/home/konrad/.config/dwl/scripts/powermenu.sh", NULL };
-static const char *mon_cmd[]        = { "/home/konrad/.config/dwl/scripts/monitor.sh", NULL };
 static const char *bright_upcmd[]   = { "/home/konrad/.config/dwl/scripts/brightness.sh", "up", NULL };
 static const char *bright_downcmd[] = { "/home/konrad/.config/dwl/scripts/brightness.sh", "down", NULL };
 
@@ -144,9 +143,7 @@ static const Key keys[] = {
 	/* modifier                  key                  function          argument */
     { 0,                         XKB_KEY_XF86MonBrightnessDown, 	spawn,          {.v = bright_downcmd} },
     { 0,                         XKB_KEY_XF86MonBrightnessUp, 	spawn,          {.v = bright_upcmd} },
-    { 0,                         XKB_KEY_XF86Sleep,               spawn,          {.v = lockcmd} },
-    { 0,                         XKB_KEY_F7,                      spawn,          {.v = mon_cmd} },
-    { 0,                         XKB_KEY_XF86ScreenSaver,         spawn,          {.v = lockcmd} },
+    { MODKEY,                    XKB_KEY_l,               spawn,          {.v = lockcmd} },
     { 0,                         XKB_KEY_XF86AudioMute,           spawn,          {.v = vol_mutecmd} },
     { 0,                         XKB_KEY_XF86AudioLowerVolume,    spawn,          {.v = vol_downcmd} },
     { 0,                         XKB_KEY_XF86AudioRaiseVolume,    spawn,          {.v = vol_upcmd} },
@@ -175,7 +172,7 @@ static const Key keys[] = {
 	{ MODKEY,                    XKB_KEY_i,           incnmaster,       {.i = +1} },
 	{ MODKEY,                    XKB_KEY_d,           incnmaster,       {.i = -1} },
 	{ MODKEY,                    XKB_KEY_h,           setmfact,         {.f = -0.05f} },
-	{ MODKEY,                    XKB_KEY_l,           setmfact,         {.f = +0.05f} },
+	//{ MODKEY,                    XKB_KEY_l,           setmfact,         {.f = +0.05f} },
 	{ MODKEY,                    XKB_KEY_Return,      zoom,             {0} },
 	{ MODKEY,                    XKB_KEY_Tab,         view,             {0} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, XKB_KEY_c,           killclient,       {0} },

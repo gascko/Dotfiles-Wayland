@@ -107,6 +107,15 @@ make
 sudo make install
 ```
 
+## Install wlock
+
+```
+mkdir -p .config/wlock
+```
+```
+git https://codeberg.org/sewn/wlock.git ~/.config/wlock
+```
+
 ## Install dunst
 
 ```
@@ -138,10 +147,8 @@ sudo chmod +x /usr/bin/tutanota.AppImage
 ```
 
 ## TODO
-* fix monitor script
-* add battery script and notify
-* find solution (TUI) for bluetooth
-* add wifi notification when connected
+* coloring foot, nvim, bar fix (transparency?)
+* add wallpapers
+* increase terminal, bar font size
+* write ncurses application for monitor script (C read json)
 * add screenshot script using grim and slurp
-* fix swaylock or switch to lightweight solution
-* fix foot terminal color
