@@ -68,11 +68,24 @@ sudo reboot
 ```
 managed=true
 ```
+> /etc/NetworkManager/NetworkManager.conf
 
 > [!NOTE]
 > If Wifi still not working remove Wifi from /etc/network/interfaces
 
-> /etc/NetworkManager/NetworkManager.conf
+```
+sudo wget https://hosts.ubuntu101.co.za/hosts.deny -O /etc/hosts.deny
+```
+
+```
+[global-dns-domain-*]
+servers=185.228.168.168,185.228.169.168
+                       
+[global-dns] 
+searches=family-filter-dns.cleanbrowsing.org
+```
+
+> /etc/NetworkManager/conf.d/dns.conf
 
 ## Neovim
 
@@ -89,16 +102,10 @@ cp ~/Dotfiles/nvim/init.lua ~/.config/nvim/
 ## Install dwl
 
 ```
-mkdir -p .config/dwl
-```
-```
-git clone https://codeberg.org/dwl/dwl.git ~/.config/dwl
+git clone https://codeberg.org/dwl/dwl.git ~/.config/
 ```
 ```
 cp ~/Dotfiles/dwl/* ~/.config/dwl/
-```
-```
-cp ~/Dotfiles/.bash_profile ~/
 ```
 ```
 sudo make install
@@ -106,9 +113,6 @@ sudo make install
 
 ## Install mew
 
-```
-mkdir -p .config/mew
-```
 ```
 git https://codeberg.org/sewn/mew.git ~/.config/mew
 ```
@@ -122,10 +126,13 @@ sudo make install
 ## Install wlock
 
 ```
-mkdir -p .config/wlock
-```
-```
 git https://codeberg.org/sewn/wlock.git ~/.config/wlock
+```
+```
+make
+```
+```
+sudo make install
 ```
 
 ## Install dunst
@@ -135,6 +142,15 @@ mkdir -p .config/dunst
 ```
 ```
 cp ~/Dotfiles/dunstrc ~/.config/dunst/
+```
+
+## bash
+
+```
+cp ~/Dotfiles/.bash_profile ~/
+```
+```
+cp ~/Dotfiles/.bashrc ~/
 ```
 
 ## Grub
@@ -156,10 +172,4 @@ sudo wget https://app.tuta.com/desktop/tutanota-desktop-linux.AppImage -O /usr/b
 ```
 ```
 sudo chmod +x /usr/bin/tutanota.AppImage
-```
-
-## Usefull Aliases in `.bashrc`
-
-```
-alias monitor='wlr-randr --output eDP-1 --pos 0,0 --output HDMI-A-2 --pos 0,-1080'
 ```
