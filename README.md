@@ -165,11 +165,17 @@ set GRUB_TIMEOUT=0
 sudo update-grub2
 ```
 
+## Browser Darkmode
+
+```
+gsettings set org.gnome.desktop.interface color-scheme prefer-dark
+```
+
 ## Tutanota
 
 ```
-sudo wget https://app.tuta.com/desktop/tutanota-desktop-linux.AppImage -O /usr/bin/tutanota.AppImage
+sudo wget https://app.tuta.com/desktop/tutanota-desktop-linux.AppImage -O /usr/bin/tutanota
 ```
 ```
-sudo chmod +x /usr/bin/tutanota.AppImage
+sudo chmod +x /usr/bin/tutanota
 ```

@@ -1,11 +1,13 @@
-libcrypt-dev
+lbcrypt-dev
 wdisplays
 python3-pylsp
 wlr-randr
 texlive
+epiphany-browser
 gh
 dunst
 network-manager
+network-manager-tui
 foot
 wayland-protocols
 libwlroots-0.19
@@ -16,7 +18,6 @@ libinput-bin
 libxkbcommon-dev
 libxkbcommon-tools
 pkg-config
-qutebrowser
 grim
 slurp
 pipewire
