@@ -18,8 +18,8 @@ static const unsigned int gappx            = 10; /* gap pixel between windows */
 static const float fullscreen_bg[]         = {0.0f, 0.0f, 0.0f, 1.0f}; /* You can also use glsl colors */
 static uint32_t colors[][3]                = {
 	/*               fg          bg          border    */
-	[SchemeNorm] = { 0xddddddff, 0x0e0e0eff, 0x1c1c1e00 },
-	[SchemeSel]  = { 0xddddddff, 0x0e0e0eff, 0xddddddff },
+	[SchemeNorm] = { 0xddddddff, 0x0e0e0edd, 0x1c1c1e00 },
+	[SchemeSel]  = { 0xddddddff, 0x0e0e0edd, 0xddddddff },
 	[SchemeUrg]  = { 0,          0,          0xddddddff },
 };
 
@@ -127,15 +127,15 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 #define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
 
 /* commands */
-static const char *termcmd[]					= { "foot", NULL };
-static const char *menucmd[]					= { "mew-run", NULL };
-static const char *lockcmd[]					= { "wlock", NULL };
-static const char *vol_upcmd[]					= { "/home/konrad/.config/dwl/scripts/volume.sh", "up", NULL };
-static const char *vol_downcmd[]				= { "/home/konrad/.config/dwl/scripts/volume.sh", "down", NULL };
-static const char *vol_mutecmd[]				= { "/home/konrad/.config/dwl/scripts/volume.sh", "mute", NULL };
-static const char *powercmd[]					= { "/home/konrad/.config/dwl/scripts/powermenu.sh", NULL };
-static const char *bright_upcmd[]				= { "/home/konrad/.config/dwl/scripts/brightness.sh", "up", NULL };
-static const char *bright_downcmd[]				= { "/home/konrad/.config/dwl/scripts/brightness.sh", "down", NULL };
+static const char *term_cmd[]					= { "foot", NULL };
+static const char *menu_cmd[]					= { "mew-run", NULL };
+static const char *lock_cmd[]					= { "wlock", NULL };
+static const char *vol_up_cmd[]					= { "/home/konrad/.config/dwl/scripts/volume.sh", "up", NULL };
+static const char *vol_down_cmd[]				= { "/home/konrad/.config/dwl/scripts/volume.sh", "down", NULL };
+static const char *vol_mute_cmd[]				= { "/home/konrad/.config/dwl/scripts/volume.sh", "mute", NULL };
+static const char *power_cmd[]					= { "/home/konrad/.config/dwl/scripts/powermenu.sh", NULL };
+static const char *bright_up_cmd[]				= { "/home/konrad/.config/dwl/scripts/brightness.sh", "up", NULL };
+static const char *bright_down_cmd[]			= { "/home/konrad/.config/dwl/scripts/brightness.sh", "down", NULL };
 static const char *screenshot_selection_cmd[]	= { "/home/konrad/.config/dwl/scripts/screenshot.sh", "selection", NULL };
 static const char *screenshot_cmd[]				= { "/home/konrad/.config/dwl/scripts/screenshot.sh", NULL };
 static const char *colorpicker_cmd[]			= { "/home/konrad/.config/dwl/scripts/colorpicker.sh", NULL };
@@ -143,19 +143,19 @@ static const char *colorpicker_cmd[]			= { "/home/konrad/.config/dwl/scripts/col
 static const Key keys[] = {
 	/* Note that Shift changes certain key codes: 2 -> at, etc. */
 	/* modifier                  key                  function          argument */
-    { 0,												XKB_KEY_XF86MonBrightnessDown,			spawn,				{.v = bright_downcmd} },
-    { 0,                         						XKB_KEY_XF86MonBrightnessUp,			spawn,          	{.v = bright_upcmd} },
-    { MODKEY|WLR_MODIFIER_SHIFT,                    	XKB_KEY_l,								spawn,          	{.v = lockcmd} },
-    { 0,                         						XKB_KEY_XF86AudioMute,					spawn,          	{.v = vol_mutecmd} },
-    { 0,                         						XKB_KEY_XF86AudioLowerVolume,			spawn,          	{.v = vol_downcmd} },
-    { 0,                         						XKB_KEY_XF86AudioRaiseVolume,			spawn,          	{.v = vol_upcmd} },
-    { MODKEY,                    						XKB_KEY_Escape,							spawn,          	{.v = powercmd} },
-	{ MODKEY,                    						XKB_KEY_p,								spawn,          	{.v = menucmd} },
+    { 0,												XKB_KEY_XF86MonBrightnessDown,			spawn,				{.v = bright_down_cmd} },
+    { 0,                         						XKB_KEY_XF86MonBrightnessUp,			spawn,          	{.v = bright_up_cmd} },
+    { MODKEY|WLR_MODIFIER_SHIFT,                    	XKB_KEY_l,								spawn,          	{.v = lock_cmd} },
+    { 0,                         						XKB_KEY_XF86AudioMute,					spawn,          	{.v = vol_mute_cmd} },
+    { 0,                         						XKB_KEY_XF86AudioLowerVolume,			spawn,          	{.v = vol_down_cmd} },
+    { 0,                         						XKB_KEY_XF86AudioRaiseVolume,			spawn,          	{.v = vol_up_cmd} },
+    { MODKEY,                    						XKB_KEY_Escape,							spawn,          	{.v = power_cmd} },
+	{ MODKEY,                    						XKB_KEY_p,								spawn,          	{.v = menu_cmd} },
 	{ 0,                         						XKB_KEY_Print,							spawn,          	{.v = screenshot_cmd} },
 	{ WLR_MODIFIER_SHIFT,        						XKB_KEY_Print,							spawn,          	{.v = screenshot_selection_cmd} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, 						XKB_KEY_Print,							spawn,          	{.v = colorpicker_cmd} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, 						XKB_KEY_Return,							spawn,          	{.v = termcmd} },
-	{ MODKEY,                    						XKB_KEY_b,								togglebar,      	{0} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, 						XKB_KEY_Return,							spawn,          	{.v = term_cmd} },
+	{ MODKEY,                    						XKB_KEY_b,								togglebar,			{0} },
 	{ MODKEY,                    						XKB_KEY_j,           					focusstack,     	{.i = +1} },
 	{ MODKEY,                    						XKB_KEY_k,           					focusstack,     	{.i = -1} },
 	{ MODKEY,                    						XKB_KEY_i,           					incnmaster,     	{.i = +1} },
@@ -204,7 +204,7 @@ static const Button buttons[] = {
 	{ ClkLtSymbol, 0,      BTN_LEFT,   setlayout,      {.v = &layouts[0]} },
 	{ ClkLtSymbol, 0,      BTN_RIGHT,  setlayout,      {.v = &layouts[2]} },
 	{ ClkTitle,    0,      BTN_MIDDLE, zoom,           {0} },
-	{ ClkStatus,   0,      BTN_MIDDLE, spawn,          {.v = termcmd} },
+	{ ClkStatus,   0,      BTN_MIDDLE, spawn,          {.v = term_cmd} },
 	{ ClkClient,   MODKEY, BTN_LEFT,   moveresize,     {.ui = CurMove} },
 	{ ClkClient,   MODKEY, BTN_MIDDLE, togglefloating, {0} },
 	{ ClkClient,   MODKEY, BTN_RIGHT,  moveresize,     {.ui = CurResize} },

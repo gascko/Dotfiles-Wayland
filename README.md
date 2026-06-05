@@ -42,18 +42,6 @@ git clone https://github.com/gascko/Dotfiles-Wayland.git ~/Dotfiles
 cp ~/Dotfiles/.* ~/
 ```
 
-## Switching to Debian Testing
-
-> [!NOTE]
-> Check Release Name of **Stable** and **Testing** [Debian Release](https://www.debian.org/releases/)
-
-```
-sudo sed -i 's/trixie/testing/g' /etc/apt/sources.list
-```
-```
-sudo apt update && sudo apt upgrade
-```
-
 ## Packages
 
 ```
@@ -135,7 +123,7 @@ make
 sudo make install
 ```
 
-## Install dunst
+## Setup dunst
 
 ```
 mkdir -p .config/dunst
