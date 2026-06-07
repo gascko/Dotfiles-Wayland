@@ -9,4 +9,4 @@ fi
 brightness=$(brightnessctl get)
 maxBrightness=$(brightnessctl max)
 brightness=$(((brightness * 100) / maxBrightness))
-dunstify -h string:x-dunst-stack-tag:brightness -u low -h int:value:"$brightness" "Brightness: ${brightness}%" 
+notify-send "Brightness: ${brightness}%" 

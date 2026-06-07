@@ -1,13 +1,13 @@
 #!/bin/bash
 
-options="\uf023\n\uf011\n\uf021"
+options="DOWN\nSLEEP\nREBOOT"
 selected=$(echo -e $options | mew)
 
-if [[ $selected == "" ]]; then
+if [[ $selected == "DOWN" ]]; then
     systemctl poweroff
-elif [[ $selected == "" ]]; then
+elif [[ $selected == "REBOOT" ]]; then
     systemctl reboot
-elif [[ $selected == "" ]]; then
+elif [[ $selected == "SLEEP" ]]; then
     systemctl suspend
     wlock
 fi

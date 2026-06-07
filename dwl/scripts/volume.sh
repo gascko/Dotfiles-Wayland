@@ -12,7 +12,7 @@ volume=$(pulsemixer --get-volume | awk '{ print $1 }')
 mute=$(pulsemixer --get-mute)
 
 if [[ $mute == 1 ]]; then
-	dunstify -h string:x-dunst-stack-tag:volume -u low "Device Muted" 
+	notify-send "Device Muted" 
 else
-	dunstify -h string:x-dunst-stack-tag:volume -u low -h int:value:"$volume" "Volume: ${volume}%" 
+	notify-send "Volume: ${volume}%" 
 fi

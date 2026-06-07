@@ -9,4 +9,4 @@ else
 
 fi
 
-dunstify -u low "Screenshot saved at ${image}" 
+notify-send -u low "Screenshot saved at ${image}" 

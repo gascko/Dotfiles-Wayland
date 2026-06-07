@@ -6,34 +6,29 @@
 /* appearance */
 static const int sloppyfocus               = 1;  /* focus follows mouse */
 static const int bypass_surface_visibility = 0;  /* 1 means idle inhibitors will disable idle tracking even if it's surface isn't visible  */
-static const unsigned int borderpx         = 2;  /* border pixel of windows */
-static const int showbar                   = 1; /* 0 means no bar */
-static const int topbar                    = 1; /* 0 means bottom bar */
-static const char *fonts[]                 = {"FontAwesome:pixelsize=18:antialias=true:autohint=true"};
-static const float rootcolor[]             = COLOR(0x000000ff);
-static const int smartgaps                 = 0;  /* 1 means no outer gap when there is only one window */
+static const unsigned int borderpx         = 3;  /* border pixel of windows */
 static int gaps                            = 1;  /* 1 means gaps between windows are added */
+static const int smartgaps                 = 0;  /* 1 means no outer gap when there is only one window */
 static const unsigned int gappx            = 10; /* gap pixel between windows */
+static const float rootcolor[]             = COLOR(0xb7d7b7ff);
+static const float bordercolor[]           = COLOR(0x1c1c1e00);
+static const float focuscolor[]            = COLOR(0xddddddff);
+static const float urgentcolor[]           = COLOR(0xddddddff);
 /* This conforms to the xdg-protocol. Set the alpha to zero to restore the old behavior */
-static const float fullscreen_bg[]         = {0.0f, 0.0f, 0.0f, 1.0f}; /* You can also use glsl colors */
-static uint32_t colors[][3]                = {
-	/*               fg          bg          border    */
-	[SchemeNorm] = { 0xddddddff, 0x0e0e0eff, 0x1c1c1e00 },
-	[SchemeSel]  = { 0xddddddff, 0x0e0e0eff, 0xddddddff },
-	[SchemeUrg]  = { 0,          0,          0xddddddff },
-};
+static const float fullscreen_bg[]         = {0.1f, 0.1f, 0.1f, 1.0f}; /* You can also use glsl colors */
 
-/* tagging */
-static char *tags[] = { "1", "2", "3", "4", "5" };
+/* tagging - TAGCOUNT must be no greater than 31 */
+#define TAGCOUNT (3)
 
 /* logging */
 static int log_level = WLR_ERROR;
 
+/* NOTE: ALWAYS keep a rule declared even if you don't use rules (e.g leave at least one example) */
 static const Rule rules[] = {
 	/* app_id             title       tags mask     isfloating   monitor */
+	/* examples: */
 	{ "Gimp_EXAMPLE",     NULL,       0,            1,           -1 }, /* Start on currently visible tags floating, not tiled */
 	{ "firefox_EXAMPLE",  NULL,       1 << 8,       0,           -1 }, /* Start on ONLY tag "9" */
-    /* default/example rule: can be changed but cannot be eliminated; at least one rule must exist */
 };
 
 /* layout(s) */
@@ -46,8 +41,10 @@ static const Layout layouts[] = {
 
 /* monitors */
 /* (x=-1, y=-1) is reserved as an "autoconfigure" monitor position indicator
- * WARNING: negative values other than (-1, -1) cause problems with Xwayland clients due to
- * https://gitlab.freedesktop.org/xorg/xserver/-/issues/899 */
+ * WARNING: negative values other than (-1, -1) cause problems with Xwayland clients
+ * https://gitlab.freedesktop.org/xorg/xserver/-/issues/899
+*/
+/* NOTE: ALWAYS add a fallback rule, even if you are completely sure it won't be used */
 static const MonitorRule monrules[] = {
    /* name        mfact  nmaster scale layout       rotate/reflect                x    y
     * example of a HiDPI laptop monitor:
@@ -139,10 +136,12 @@ static const char *bright_down_cmd[]			= { "/home/konrad/.config/dwl/scripts/bri
 static const char *screenshot_cmd[]				= { "/home/konrad/.config/dwl/scripts/screenshot.sh", NULL };
 static const char *screenshot_selection_cmd[]	= {"/bin/sh", "-c", "/home/konrad/.config/dwl/scripts/screenshot.sh selection &", NULL };
 static const char *colorpicker_cmd[]			= {"/bin/sh", "-c", "/home/konrad/.config/dwl/scripts/colorpicker.sh &", NULL };
+static const char *status_cmd[]			= {"/bin/sh", "-c", "/home/konrad/.config/dwl/scripts/status.sh &", NULL };
 
 static const Key keys[] = {
 	/* Note that Shift changes certain key codes: 2 -> at, etc. */
 	/* modifier                  key                  function          argument */
+	{ MODKEY,                    XKB_KEY_g,          togglegaps,     {0} },
     { 0,												XKB_KEY_XF86MonBrightnessDown,			spawn,				{.v = bright_down_cmd} },
     { 0,                         						XKB_KEY_XF86MonBrightnessUp,			spawn,          	{.v = bright_up_cmd} },
     { MODKEY|WLR_MODIFIER_SHIFT,                    	XKB_KEY_L,								spawn,          	{.v = lock_cmd} },
@@ -154,8 +153,8 @@ static const Key keys[] = {
 	{ 0,                         						XKB_KEY_Print,							spawn,          	{.v = screenshot_cmd} },
 	{ 0,				        						XKB_KEY_XF86Search,						spawn,          	{.v = colorpicker_cmd} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, 						XKB_KEY_Return,							spawn,          	{.v = term_cmd} },
+	{ MODKEY,											XKB_KEY_s,								spawn,          	{.v = status_cmd} },
 	{ MODKEY,                    						XKB_KEY_p,								spawn,				{.v = menu_cmd} },
-	{ MODKEY,                    						XKB_KEY_b,								togglebar,			{0} },
 	{ MODKEY,                    						XKB_KEY_j,           					focusstack,     	{.i = +1} },
 	{ MODKEY,                    						XKB_KEY_k,           					focusstack,     	{.i = -1} },
 	{ MODKEY,                    						XKB_KEY_i,           					incnmaster,     	{.i = +1} },
@@ -178,7 +177,6 @@ static const Key keys[] = {
 	{ MODKEY|WLR_MODIFIER_SHIFT, 						XKB_KEY_less,        					tagmon,           	{.i = WLR_DIRECTION_LEFT} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, 						XKB_KEY_greater,     					tagmon,           	{.i = WLR_DIRECTION_RIGHT} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, 						XKB_KEY_Q,								quit,				{0} },
-	{ MODKEY,											XKB_KEY_g,								togglegaps,			{0} },
 	
 	TAGKEYS(          XKB_KEY_1, 						XKB_KEY_exclam,							0),
 	TAGKEYS(          XKB_KEY_2, 						XKB_KEY_quotedbl,                       1),
@@ -201,15 +199,7 @@ static const Key keys[] = {
 };
 
 static const Button buttons[] = {
-	{ ClkLtSymbol, 0,      BTN_LEFT,   setlayout,      {.v = &layouts[0]} },
-	{ ClkLtSymbol, 0,      BTN_RIGHT,  setlayout,      {.v = &layouts[2]} },
-	{ ClkTitle,    0,      BTN_MIDDLE, zoom,           {0} },
-	{ ClkStatus,   0,      BTN_MIDDLE, spawn,          {.v = term_cmd} },
-	{ ClkClient,   MODKEY, BTN_LEFT,   moveresize,     {.ui = CurMove} },
-	{ ClkClient,   MODKEY, BTN_MIDDLE, togglefloating, {0} },
-	{ ClkClient,   MODKEY, BTN_RIGHT,  moveresize,     {.ui = CurResize} },
-	{ ClkTagBar,   0,      BTN_LEFT,   view,           {0} },
-	{ ClkTagBar,   0,      BTN_RIGHT,  toggleview,     {0} },
-	{ ClkTagBar,   MODKEY, BTN_LEFT,   tag,            {0} },
-	{ ClkTagBar,   MODKEY, BTN_RIGHT,  toggletag,      {0} },
+	{ MODKEY, BTN_LEFT,   moveresize,     {.ui = CurMove} },
+	{ MODKEY, BTN_MIDDLE, togglefloating, {0} },
+	{ MODKEY, BTN_RIGHT,  moveresize,     {.ui = CurResize} },
 };

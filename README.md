@@ -110,7 +110,7 @@ cp -r ~/Dotfiles/dwl/* ~/.config/dwl/
 sudo make install
 ```
 
-> The `gaps` and `bar` patch are allready applied
+> The `gaps` patch is already applied
 
 ## Mew (Searchbar)
 
@@ -136,13 +136,13 @@ make
 sudo make install
 ```
 
-## Dunst (Notifications)
+## Mako (Notifications)
 
 ```
-mkdir -p .config/dunst
+mkdir -p .config/mako
 ```
 ```
-cp ~/Dotfiles/dunst/dunstrc ~/.config/dunst/
+cp ~/Dotfiles/mako/config ~/.config/mako/
 ```
 
 ## Foot (Terminal)

@@ -6,7 +6,7 @@ python3-pylsp
 wlr-randr
 epiphany-browser
 gh
-dunst
+mako-notifier
 network-manager
 foot
 wayland-protocols
@@ -41,8 +41,6 @@ adb
 imagemagick
 swayimg
 clangd
-fonts-font-awesome
 vlc
 zathura
-swaybg
 libfcft-dev

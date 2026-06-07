@@ -1,0 +1,10 @@
+max-history=5
+text-color=#DDDDDDFF
+background-color=#1C1C1EFF
+width=400
+border-size=1
+border-color=#DDDDDDFF
+border-radius=5
+text-alignment=center
+default-timeout=3000
+anchor=top-center
