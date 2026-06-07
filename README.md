@@ -1,19 +1,5 @@
 ![](example.png)
 
-# TL;DR
-
-* Wallpaper [Wallhaven](https://whvn.cc/rqy1mm)
-* Terminal [foot](https://codeberg.org/dnkl/foot)
-* Screenlocker [wlock](https://github.com/rsalmin/wlock)
-* WM [dwl](https://codeberg.org/dwl/dwl)
-* Searchbar [mew](https://codeberg.org/sewn/mew)
-* Notifications [dunst](https://github.com/dunst-project/dunst)
-* Editor [nvim](https://neovim.io/)
-
-# Upgrades in next Debian Version
-
-* [Texlab](https://github.com/latex-lsp/texlab) as Latex LSP
-
 # Installation
 
 > [!NOTE]
