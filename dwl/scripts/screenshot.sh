@@ -6,6 +6,7 @@ if [[ $1 == "selection" ]]; then
 	grim -g "$(slurp)" $image
 else
 	grim $image
+
 fi
 
-dunstify -h string:x-dunst-stack-tag:screenshot -u low "Screenshot saved at ${image}" 
+dunstify -u low "Screenshot saved at ${image}" 

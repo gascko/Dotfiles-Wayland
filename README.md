@@ -10,12 +10,16 @@
 * Notifications [dunst](https://github.com/dunst-project/dunst)
 * Editor [nvim](https://neovim.io/)
 
+# Upgrades in next Debian Version
+
+* [Texlab](https://github.com/latex-lsp/texlab) as Latex LSP
+
 # Installation
 
 > [!NOTE]
 > Setup installed with [Debian Netinstaller](https://www.debian.org/CD/netinst/)
 
- ## Sudo and Git
+## Sudo and Git
 
 > [!NOTE]
 > Login as root
@@ -53,13 +57,13 @@ sudo reboot
 
 ## Network
 
+
+> Remove Wifi from /etc/network/interfaces
+
 ```
 managed=true
 ```
 > /etc/NetworkManager/NetworkManager.conf
-
-> [!NOTE]
-> If Wifi still not working remove Wifi from /etc/network/interfaces
 
 ```
 sudo wget https://hosts.ubuntu101.co.za/hosts.deny -O /etc/hosts.deny
@@ -78,31 +82,40 @@ searches=family-filter-dns.cleanbrowsing.org
 ## Neovim
 
 ```
-mkdir -p ~/.local/share/nvim/site/pack/deps/start
+mkdir -p ~/.config/nvim/
 ```
+
 ```
-git clone https://github.com/nvim-mini/mini.deps ~/.local/share/nvim/site/pack/deps/start/mini.deps
+git clone https://github.com/neovim/neovim ~/.config/nvim/
 ```
+
+```
+make CMAKE_BUILD_TYPE=RelWithDebInfo
+sudo make install
+```
+
 ```
 cp ~/Dotfiles/nvim/init.lua ~/.config/nvim/
 ```
 
-## Install dwl
+## Dwl (Window Manager)
 
 ```
-git clone https://codeberg.org/dwl/dwl.git ~/.config/
+git clone --branch 0.7 https://codeberg.org/dwl/dwl.git ~/.config/dwl/
 ```
 ```
-cp ~/Dotfiles/dwl/* ~/.config/dwl/
+cp -r ~/Dotfiles/dwl/* ~/.config/dwl/
 ```
 ```
 sudo make install
 ```
 
-## Install mew
+> The `gaps` and `bar` patch are allready applied
+
+## Mew (Searchbar)
 
 ```
-git https://codeberg.org/sewn/mew.git ~/.config/mew
+git clone https://codeberg.org/sewn/mew.git ~/.config/mew
 ```
 ```
 make
@@ -111,10 +124,10 @@ make
 sudo make install
 ```
 
-## Install wlock
+## Wlock (Screenlock)
 
 ```
-git https://codeberg.org/sewn/wlock.git ~/.config/wlock
+git clone https://codeberg.org/sewn/wlock.git ~/.config/wlock
 ```
 ```
 make
@@ -123,22 +136,22 @@ make
 sudo make install
 ```
 
-## Setup dunst
+## Dunst (Notifications)
 
 ```
 mkdir -p .config/dunst
 ```
 ```
-cp ~/Dotfiles/dunstrc ~/.config/dunst/
+cp ~/Dotfiles/dunst/dunstrc ~/.config/dunst/
 ```
 
-## bash
+## Foot (Terminal)
 
 ```
-cp ~/Dotfiles/.bash_profile ~/
+mkdir -p .config/foot
 ```
 ```
-cp ~/Dotfiles/.bashrc ~/
+cp ~/Dotfiles/foot/foot.ini ~/.config/foot/
 ```
 
 ## Grub
@@ -153,17 +166,20 @@ set GRUB_TIMEOUT=0
 sudo update-grub2
 ```
 
-## Browser Darkmode
+## Anki
+
+> Check for new Version (Current 25.09)
+
+```
+wget https://github.com/ankitects/anki/releases/download/25.09/anki-launcher-25.09-linux.tar.zst
+unzstd anki-launcher-25.09-linux.tar.zst
+tar xaf anki-launcher-25.09-linux.tar
+./anki
+./install.sh
+```
+
+### Browser Darkmode
 
 ```
 gsettings set org.gnome.desktop.interface color-scheme prefer-dark
-```
-
-## Tutanota
-
-```
-sudo wget https://app.tuta.com/desktop/tutanota-desktop-linux.AppImage -O /usr/bin/tutanota
-```
-```
-sudo chmod +x /usr/bin/tutanota
 ```

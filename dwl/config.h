@@ -18,8 +18,8 @@ static const unsigned int gappx            = 10; /* gap pixel between windows */
 static const float fullscreen_bg[]         = {0.0f, 0.0f, 0.0f, 1.0f}; /* You can also use glsl colors */
 static uint32_t colors[][3]                = {
 	/*               fg          bg          border    */
-	[SchemeNorm] = { 0xddddddff, 0x0e0e0edd, 0x1c1c1e00 },
-	[SchemeSel]  = { 0xddddddff, 0x0e0e0edd, 0xddddddff },
+	[SchemeNorm] = { 0xddddddff, 0x0e0e0eff, 0x1c1c1e00 },
+	[SchemeSel]  = { 0xddddddff, 0x0e0e0eff, 0xddddddff },
 	[SchemeUrg]  = { 0,          0,          0xddddddff },
 };
 
@@ -136,25 +136,25 @@ static const char *vol_mute_cmd[]				= { "/home/konrad/.config/dwl/scripts/volum
 static const char *power_cmd[]					= { "/home/konrad/.config/dwl/scripts/powermenu.sh", NULL };
 static const char *bright_up_cmd[]				= { "/home/konrad/.config/dwl/scripts/brightness.sh", "up", NULL };
 static const char *bright_down_cmd[]			= { "/home/konrad/.config/dwl/scripts/brightness.sh", "down", NULL };
-static const char *screenshot_selection_cmd[]	= { "/home/konrad/.config/dwl/scripts/screenshot.sh", "selection", NULL };
 static const char *screenshot_cmd[]				= { "/home/konrad/.config/dwl/scripts/screenshot.sh", NULL };
-static const char *colorpicker_cmd[]			= { "/home/konrad/.config/dwl/scripts/colorpicker.sh", NULL };
+static const char *screenshot_selection_cmd[]	= {"/bin/sh", "-c", "/home/konrad/.config/dwl/scripts/screenshot.sh selection &", NULL };
+static const char *colorpicker_cmd[]			= {"/bin/sh", "-c", "/home/konrad/.config/dwl/scripts/colorpicker.sh &", NULL };
 
 static const Key keys[] = {
 	/* Note that Shift changes certain key codes: 2 -> at, etc. */
 	/* modifier                  key                  function          argument */
     { 0,												XKB_KEY_XF86MonBrightnessDown,			spawn,				{.v = bright_down_cmd} },
     { 0,                         						XKB_KEY_XF86MonBrightnessUp,			spawn,          	{.v = bright_up_cmd} },
-    { MODKEY|WLR_MODIFIER_SHIFT,                    	XKB_KEY_l,								spawn,          	{.v = lock_cmd} },
+    { MODKEY|WLR_MODIFIER_SHIFT,                    	XKB_KEY_L,								spawn,          	{.v = lock_cmd} },
     { 0,                         						XKB_KEY_XF86AudioMute,					spawn,          	{.v = vol_mute_cmd} },
     { 0,                         						XKB_KEY_XF86AudioLowerVolume,			spawn,          	{.v = vol_down_cmd} },
     { 0,                         						XKB_KEY_XF86AudioRaiseVolume,			spawn,          	{.v = vol_up_cmd} },
     { MODKEY,                    						XKB_KEY_Escape,							spawn,          	{.v = power_cmd} },
-	{ MODKEY,                    						XKB_KEY_p,								spawn,          	{.v = menu_cmd} },
+	{ MODKEY,					                    	XKB_KEY_Print,							spawn,          	{.v = screenshot_selection_cmd} },
 	{ 0,                         						XKB_KEY_Print,							spawn,          	{.v = screenshot_cmd} },
-	{ WLR_MODIFIER_SHIFT,        						XKB_KEY_Print,							spawn,          	{.v = screenshot_selection_cmd} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, 						XKB_KEY_Print,							spawn,          	{.v = colorpicker_cmd} },
+	{ 0,				        						XKB_KEY_XF86Search,						spawn,          	{.v = colorpicker_cmd} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, 						XKB_KEY_Return,							spawn,          	{.v = term_cmd} },
+	{ MODKEY,                    						XKB_KEY_p,								spawn,				{.v = menu_cmd} },
 	{ MODKEY,                    						XKB_KEY_b,								togglebar,			{0} },
 	{ MODKEY,                    						XKB_KEY_j,           					focusstack,     	{.i = +1} },
 	{ MODKEY,                    						XKB_KEY_k,           					focusstack,     	{.i = -1} },
@@ -164,7 +164,7 @@ static const Key keys[] = {
 	{ MODKEY,											XKB_KEY_l,           					setmfact,       	{.f = +0.05f} },
 	{ MODKEY,                    						XKB_KEY_Return,      					zoom,           	{0} },
 	{ MODKEY,                    						XKB_KEY_Tab,         					view,           	{0} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, 						XKB_KEY_c,           					killclient,     	{0} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, 						XKB_KEY_C,           					killclient,     	{0} },
 	{ MODKEY,                    						XKB_KEY_t,           					setlayout,      	{.v = &layouts[0]} },
 	{ MODKEY,                    						XKB_KEY_f,           					setlayout,      	{.v = &layouts[1]} },
 	{ MODKEY,                    						XKB_KEY_m,           					setlayout,      	{.v = &layouts[2]} },
@@ -177,7 +177,7 @@ static const Key keys[] = {
 	{ MODKEY,                    						XKB_KEY_period,      					focusmon,         	{.i = WLR_DIRECTION_RIGHT} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, 						XKB_KEY_less,        					tagmon,           	{.i = WLR_DIRECTION_LEFT} },
 	{ MODKEY|WLR_MODIFIER_SHIFT, 						XKB_KEY_greater,     					tagmon,           	{.i = WLR_DIRECTION_RIGHT} },
-	{ MODKEY|WLR_MODIFIER_SHIFT, 						XKB_KEY_q,								quit,				{0} },
+	{ MODKEY|WLR_MODIFIER_SHIFT, 						XKB_KEY_Q,								quit,				{0} },
 	{ MODKEY,											XKB_KEY_g,								togglegaps,			{0} },
 	
 	TAGKEYS(          XKB_KEY_1, 						XKB_KEY_exclam,							0),

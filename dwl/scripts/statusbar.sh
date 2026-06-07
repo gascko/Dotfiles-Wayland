@@ -45,10 +45,16 @@ volume() {
 	volumeStatus="$(pulsemixer --get-volume | awk '{print $1}')"
 	muteStatus="$(pulsemixer --get-mute)"
 	
-	if [[ $volumeStatus -gt 0 && $muteStatus == 0 ]]; then
-		symbol="\uf028"
-	else
-		symbol=""
+	if [[ $volumeStatus -gt 50 ]]; then
+		symbol="\uf028"	
+	elif [[ $volumeStatus -gt 0 ]]; then
+		symbol="\uf027"
+	elif [[ $volumeStatus == 0 ]]; then
+		symbol="\uf026"
+	fi
+
+	if [[ $muteStatus == 1 ]]; then
+		symbol="\uf026"
 	fi
 
     echo -n -e "$symbol"
@@ -67,10 +73,6 @@ while true; do
 
     if [[ -n $networkStatus ]]; then
         statusLine="$statusLine$networkStatus   "
-    fi
-    
-    if [[ -n $bluetoothStatus ]]; then
-        statusLine="$statusLine$bluetoothStatus   "
     fi
     
     if [[ -n $batteryStatus ]]; then
