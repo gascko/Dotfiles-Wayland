@@ -169,3 +169,12 @@ tar xaf anki-launcher-25.09-linux.tar
 ```
 gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 ```
+
+### Cron
+
+**Battery Warning**
+
+```
+DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
+* * * * * /home/konrad/.config/dwl/scripts/checkBattery.sh check
+```

@@ -8,3 +8,8 @@ border-radius=5
 text-alignment=center
 default-timeout=3000
 anchor=top-center
+group-by=category
+progress-color=over #8A8A8AFF
+
+[grouped]
+format=<b>%s</b>\n%b

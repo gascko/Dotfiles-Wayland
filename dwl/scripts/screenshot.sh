@@ -9,4 +9,4 @@ else
 
 fi
 
-notify-send -u low "Screenshot saved at ${image}" 
+notify-send "Screenshot saved at ${image}" --category SCREENSHOT 
