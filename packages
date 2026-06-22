@@ -1,7 +1,8 @@
 libcrypt-dev
+libsecret-1-0
+libsecret-1-dev
+gnome-keyring
 wdisplays
-glow
-gparted
 python3-pylsp
 wlr-randr
 epiphany-browser

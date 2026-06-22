@@ -126,11 +126,11 @@ static const enum libinput_config_tap_button_map button_map = LIBINPUT_CONFIG_TA
 /* commands */
 static const char *term_cmd[]					= { "foot", NULL };
 static const char *menu_cmd[]					= { "mew-run", NULL };
-static const char *lock_cmd[]					= { "wlock", NULL };
+static const char *lock_cmd[]					= { "/home/konrad/.config/dwl/scripts/powermenu.sh", "sleep", NULL };
 static const char *vol_up_cmd[]					= { "/home/konrad/.config/dwl/scripts/volume.sh", "up", NULL };
 static const char *vol_down_cmd[]				= { "/home/konrad/.config/dwl/scripts/volume.sh", "down", NULL };
 static const char *vol_mute_cmd[]				= { "/home/konrad/.config/dwl/scripts/volume.sh", "mute", NULL };
-static const char *power_cmd[]					= { "/home/konrad/.config/dwl/scripts/powermenu.sh", NULL };
+static const char *power_cmd[]					= { "/home/konrad/.config/dwl/scripts/powermenu.sh", "shutdown", NULL };
 static const char *bright_up_cmd[]				= { "/home/konrad/.config/dwl/scripts/brightness.sh", "up", NULL };
 static const char *bright_down_cmd[]			= { "/home/konrad/.config/dwl/scripts/brightness.sh", "down", NULL };
 static const char *screenshot_cmd[]				= { "/home/konrad/.config/dwl/scripts/screenshot.sh", NULL };
@@ -144,7 +144,7 @@ static const Key keys[] = {
 	{ MODKEY,                    XKB_KEY_g,          togglegaps,     {0} },
     { 0,												XKB_KEY_XF86MonBrightnessDown,			spawn,				{.v = bright_down_cmd} },
     { 0,                         						XKB_KEY_XF86MonBrightnessUp,			spawn,          	{.v = bright_up_cmd} },
-    { MODKEY|WLR_MODIFIER_SHIFT,                    	XKB_KEY_L,								spawn,          	{.v = lock_cmd} },
+    { MODKEY|WLR_MODIFIER_SHIFT,						XKB_KEY_L,								spawn,          	{.v = lock_cmd} },
     { 0,                         						XKB_KEY_XF86AudioMute,					spawn,          	{.v = vol_mute_cmd} },
     { 0,                         						XKB_KEY_XF86AudioLowerVolume,			spawn,          	{.v = vol_down_cmd} },
     { 0,                         						XKB_KEY_XF86AudioRaiseVolume,			spawn,          	{.v = vol_up_cmd} },

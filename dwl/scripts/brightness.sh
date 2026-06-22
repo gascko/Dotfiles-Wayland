@@ -9,4 +9,4 @@ fi
 brightness=$(brightnessctl get)
 maxBrightness=$(brightnessctl max)
 brightness=$(((brightness * 100) / maxBrightness))
-notify-send "Brightness" --category BRIGHTNESS --hint=INT:value:$brightness
+notify-send "Brightness ${brightness}%" --category BRIGHTNESS --hint=INT:value:$brightness

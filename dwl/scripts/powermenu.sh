@@ -1,14 +1,8 @@
 #!/bin/bash
 
-options="DOWN\nSLEEP\nREBOOT"
-selected=$(echo -e $options | mew)
-
-if [[ $selected == "DOWN" ]]; then
-    systemctl poweroff
-elif [[ $selected == "REBOOT" ]]; then
-    systemctl reboot
-elif [[ $selected == "SLEEP" ]]; then
-    systemctl suspend
+if [[ $1 == "sleep" ]]; then
+    systemctl sleep
     wlock
+elif [[ $1 == "shutdown" ]]; then
+	notify-send --category "POWERMENU SHUTDOWN" "Shutdown now?" "[KLICK TO PROCEED]" --action="YES"
 fi
-

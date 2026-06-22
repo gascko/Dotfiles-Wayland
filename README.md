@@ -43,23 +43,21 @@ sudo reboot
 
 ## Network
 
-
 > Remove Wifi from /etc/network/interfaces
+
+> Remove dhcpcd package `sudo apt remove dhcpcd-base`
 
 ```
 managed=true
 ```
-> /etc/NetworkManager/NetworkManager.conf
 
-```
-sudo wget https://hosts.ubuntu101.co.za/hosts.deny -O /etc/hosts.deny
-```
+> /etc/NetworkManager/NetworkManager.conf
 
 ```
 [global-dns-domain-*]
 servers=185.228.168.168,185.228.169.168
-                       
-[global-dns] 
+
+[global-dns]
 searches=family-filter-dns.cleanbrowsing.org
 ```
 
@@ -177,4 +175,11 @@ gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 ```
 DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
 * * * * * /home/konrad/.config/dwl/scripts/checkBattery.sh check
+```
+
+### Tutanota
+
+```
+sudo wget https://app.tuta.com/desktop/tutanota-desktop-linux.AppImage -O /usr/local/bin/tutanota.AppImage
+sudo chmod +x /usr/local/bin/tutanota.AppImage
 ```
