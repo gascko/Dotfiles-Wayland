@@ -14,5 +14,5 @@ progress-color=over #8A8A8AFF
 [grouped]
 format=<b>%s</b>\n%b
 
-[category="POWERMENU SHUTDOWN" actionable]
-on-button-left=exec systemctl shutdown
+[category="SHUTDOWN" actionable]
+on-button-left=exec systemctl poweroff

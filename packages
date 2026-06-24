@@ -5,6 +5,7 @@ gnome-keyring
 wdisplays
 python3-pylsp
 wlr-randr
+system-config-printer
 epiphany-browser
 gh
 mako-notifier

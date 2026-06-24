@@ -63,10 +63,10 @@ searches=family-filter-dns.cleanbrowsing.org
 
 > /etc/NetworkManager/conf.d/dns.conf
 
-## Neovim
+## Neovim (Editor)
 
 ```
-mkdir -p ~/.config/nvim/
+cp -r ~/Dotfiles/nvim/ ~/.config/
 ```
 
 ```
@@ -78,18 +78,16 @@ make CMAKE_BUILD_TYPE=RelWithDebInfo
 sudo make install
 ```
 
-```
-cp ~/Dotfiles/nvim/init.lua ~/.config/nvim/
-```
-
 ## Dwl (Window Manager)
 
 ```
 git clone --branch 0.7 https://codeberg.org/dwl/dwl.git ~/.config/dwl/
 ```
+
 ```
-cp -r ~/Dotfiles/dwl/* ~/.config/dwl/
+cp -r ~/Dotfiles/dwl/* ~/.config/
 ```
+
 ```
 sudo make install
 ```
@@ -101,9 +99,15 @@ sudo make install
 ```
 git clone https://codeberg.org/sewn/mew.git ~/.config/mew
 ```
+
+```
+cp -r ~/Dotfiles/mew/* ~/.config/mew/
+```
+
 ```
 make
 ```
+
 ```
 sudo make install
 ```
@@ -113,9 +117,11 @@ sudo make install
 ```
 git clone https://codeberg.org/sewn/wlock.git ~/.config/wlock
 ```
+
 ```
 make
 ```
+
 ```
 sudo make install
 ```
@@ -123,19 +129,13 @@ sudo make install
 ## Mako (Notifications)
 
 ```
-mkdir -p .config/mako
-```
-```
-cp ~/Dotfiles/mako/config ~/.config/mako/
+cp -r ~/Dotfiles/mako/ ~/.config/
 ```
 
 ## Foot (Terminal)
 
 ```
-mkdir -p .config/foot
-```
-```
-cp ~/Dotfiles/foot/foot.ini ~/.config/foot/
+cp -r ~/Dotfiles/foot/ ~/.config/
 ```
 
 ## Grub
@@ -150,15 +150,27 @@ set GRUB_TIMEOUT=0
 sudo update-grub2
 ```
 
-## Anki
+## Anki (Slidecards)
 
 > Check for new Version (Current 25.09)
 
 ```
 wget https://github.com/ankitects/anki/releases/download/25.09/anki-launcher-25.09-linux.tar.zst
+```
+
+```
 unzstd anki-launcher-25.09-linux.tar.zst
+```
+
+```
 tar xaf anki-launcher-25.09-linux.tar
+```
+
+```
 ./anki
+```
+
+```
 ./install.sh
 ```
 
@@ -168,7 +180,7 @@ tar xaf anki-launcher-25.09-linux.tar
 gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 ```
 
-### Cron
+### Cron 
 
 **Battery Warning**
 
@@ -177,9 +189,28 @@ DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
 * * * * * /home/konrad/.config/dwl/scripts/checkBattery.sh check
 ```
 
-### Tutanota
+> `crontab -e`
+
+### Tutanota (Mail)
 
 ```
 sudo wget https://app.tuta.com/desktop/tutanota-desktop-linux.AppImage -O /usr/local/bin/tutanota.AppImage
+```
+
+```
 sudo chmod +x /usr/local/bin/tutanota.AppImage
+```
+
+### Printing
+
+```
+sudo adduser konrad lpadmin 
+```
+
+> CUPS GUI at `http://localhost:631/admin`
+
+## Swayimg (Image Viewing)
+
+```
+cp -r ~/Dotfiles/swayimg/ ~/.config/
 ```
