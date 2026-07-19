@@ -186,7 +186,7 @@ gsettings set org.gnome.desktop.interface color-scheme prefer-dark
 
 ```
 DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1000/bus"
-* * * * * /home/konrad/.config/dwl/scripts/checkBattery.sh check
+* * * * * /home/konrad/.config/dwl/scripts/checkBattery.sh
 ```
 
 > `crontab -e`

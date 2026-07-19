@@ -10,9 +10,29 @@ default-timeout=3000
 anchor=top-center
 group-by=category
 progress-color=over #8A8A8AFF
+outer-margin=0,0,50,0
 
 [grouped]
 format=<b>%s</b>\n%b
 
+[category="BATTERY"]
+anchor=center
+font=monospace 20
+width=300
+background-color=#CC1A1AFF
+
+[category="BRIGHTNESS"]
+width=200
+anchor=bottom-center
+
+[category="STATUS"]
+group-by=summary
+
+[category="VOLUME"]
+width=200
+anchor=bottom-center
+
 [category="SHUTDOWN" actionable]
 on-button-left=exec systemctl poweroff
+anchor=center
+font=monospace 20
