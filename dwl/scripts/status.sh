@@ -6,4 +6,4 @@ statusBat2="$(cat /sys/class/power_supply/BAT1/status)"
 
 notify-send --category "STATUS" "$(date +%H:%M) Uhr" 
 notify-send --category "STATUS" "${capacity}% ${statusBat2}" 
-notify-send --category "STATUS" "Verbunden mit ${ssid}" 
+notify-send --category "STATUS" "Connected to ${ssid}" 
