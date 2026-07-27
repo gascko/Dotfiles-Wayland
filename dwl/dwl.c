@@ -1,6 +1,7 @@
 /*
  * See LICENSE file for copyright and license details.
  */
+
 #include <getopt.h>
 #include <libinput.h>
 #include <linux/input-event-codes.h>
@@ -145,6 +146,7 @@ typedef struct {
 
 typedef struct {
 	uint32_t mod;
+	int chain;
 	xkb_keysym_t keysym;
 	void (*func)(const Arg *);
 	const Arg arg;
@@ -363,6 +365,7 @@ static const char broken[] = "broken";
 static pid_t child_pid = -1;
 static int locked;
 static void *exclusive_focus;
+static int chainkey = -1;
 static struct wl_display *dpy;
 static struct wl_event_loop *event_loop;
 static struct wlr_backend *backend;
@@ -1572,11 +1575,30 @@ keybinding(uint32_t mods, xkb_keysym_t sym)
 	const Key *k;
 	for (k = keys; k < END(keys); k++) {
 		if (CLEANMASK(mods) == CLEANMASK(k->mod)
-				&& sym == k->keysym && k->func) {
+				&& sym == k->keysym
+				&& chainkey == -1
+				&& k->chain == -1
+				&& k->func) {
 			k->func(&k->arg);
 			return 1;
 		}
+		else if (sym == k->keysym
+				&& chainkey != -1
+				&& k->chain == chainkey
+				&& k->func) {
+			k->func(&k->arg);
+			chainkey = -1;
+			return 1;
+		}
+		else if (CLEANMASK(mods) == CLEANMASK(k->mod)
+				&& k->chain == (int)sym
+				&& chainkey == -1
+				&& k->func) {
+			chainkey = sym;
+			return 1;
+		}
 	}
+	chainkey = -1;	
 	return 0;
 }
 

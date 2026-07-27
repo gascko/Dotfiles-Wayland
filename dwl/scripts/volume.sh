@@ -14,5 +14,5 @@ mute=$(pulsemixer --get-mute)
 if [[ $mute == 1 ]]; then
 	notify-send "Muted" --category=VOLUME 
 else
-	notify-send "Volume ${volume}%" --category=VOLUME --hint=INT:value:$volume 
+	notify-send "" --category=VOLUME --hint=INT:value:$volume 
 fi
